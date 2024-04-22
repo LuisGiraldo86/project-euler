@@ -22,7 +22,7 @@ Output Format
 Print the required answer for each test case in a new line. 
 """
 
-# auxiliary functions 
+# solution
 
 def largest_palindrome(N):
 

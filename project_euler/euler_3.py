@@ -18,10 +18,7 @@ Output Format
 -------------
 For each test case, display the largest prime factor of N. 
 """
-# auxiliary functions
-
-import time
-
+# solution
 
 def largest_prime_factor(N:int)->int:
 
@@ -37,20 +34,3 @@ def largest_prime_factor(N:int)->int:
         return 2
     else:
         return N
-
-
-def execution_time(function, N, reps):
-    total_time = 0
-    count = 0
-    for k in range(0,reps):
-        str_time = time.time()
-        function(N)
-        end_time = time.time()
-        ex_time = end_time - str_time
-        total_time = total_time + ex_time
-        count=count+1
-    return total_time/reps, count
-
-
-time1, count = execution_time(largest_prime_factor, 600851475143, 1000)
-time1
