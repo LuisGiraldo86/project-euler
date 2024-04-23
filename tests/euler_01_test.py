@@ -30,5 +30,6 @@ with open('testData/euler_01.txt', 'r') as file:
 solutions = [euler_project_1(int(n[:-1])) for n in tests[1:]]
 
 with open('solutions/euler_01.txt', 'w') as file:
-    file.writelines(solutions)
+    for solution in solutions:
+        file.write(str(solution)+'\n')
     
