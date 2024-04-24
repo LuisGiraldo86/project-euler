@@ -3,17 +3,17 @@
 # =================================
 
 """
-2520 is the smallest number that can be divided by each of the numbers from to without any remainder.
-What is the smallest positive number that is evenly divisible(divisible with no remainder) by all of the numbers from 1 to N?
+2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
+What is the smallest positive number that is evenly divisible (divisible with no remainder) by all of the numbers from 1 to N?
 
 Input Format
 ------------
-First line contains T that denotes the number of test cases. This is followed by lines, each containing an integer, N.
+First line contains T that denotes the number of test cases. This is followed by T lines, each containing an integer, N.
 
 Constraints
 -----------
 1 <= T <= 10
-1 <= T <= 40
+1 <= N <= 40
 
 Output Format
 -------------
@@ -22,14 +22,27 @@ Print the required answer for each test case.
 
 # solution
 
-def sieve(N):
+def primes_sieve(upper_bound:int)->list:
+
+    """
+    Function to find all primes below certain upper bound using Erathostenes' sieve
+
+    Parameters
+    ----------
+    upper_bound:int
+        upper bound for the primes
+
+    Return
+    ------
+    list of integers
+    """
 
     primes = [2]
 
-    lst = [k for k in range(3,N+1,2)]
+    lst = [k for k in range(3,upper_bound+1,2)]
     
     k=0
-    while lst[k]**2<N:
+    while lst[k]**2<upper_bound:
         prime = lst[k]
         for i in range(k+1,len(lst)):
             if prime==0:
@@ -43,9 +56,24 @@ def sieve(N):
             primes.append(prime)
     return primes
 
-def mcm(N):
+def mcm_first_integers(N:int)->int:
 
-    primes = sieve(20)
+    """
+    Function to compute the minimum common multiple of the first N integers
+
+    Parameter
+    ---------
+    N:int
+        upper bound of the first consecutive integers
+
+    Return
+    ------
+    int
+    """
+
+    # list of primes at most half of N
+    primes = primes_sieve(N//2+1)
+    
     prod = 1
 
     for prime in primes:
