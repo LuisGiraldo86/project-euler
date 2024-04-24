@@ -51,4 +51,4 @@ class PrimeSequence:
         int
         """
 
-        return self.sequence[N]
+        return self.sequence[N-1]
