@@ -28,7 +28,7 @@ with open('testData/euler_07.txt', 'r') as file:
     tests = file.readlines()
 
 # compute solutions
-solutions = [primes.sequence[int(n[:-1])] for n in tests[1:]]
+solutions = [primes.sequence[int(n[:-1])-1] for n in tests[1:]]
 
 with open('solutions/euler_07.txt', 'w') as file:
     for solution in solutions:
