@@ -21,22 +21,34 @@ Print the required answer for each test case.
 """
 
 from EulerModule import eratosthenes_sieve
-
+from math import log
 
 # bounds for the n-th prime n log(n) and n(log(n) + log(log(n)))
 
-from math import log
+class PrimeSequence:
 
-n=10**4
-upper_bound = n*(log(n) + log(log(n)))
-upper_bound = int(round(upper_bound,0))
-upper_bound
+    def __init__(self, greatest_term:int) -> None:
 
+        self.greatest_term = greatest_term
+        self.upper_bound = int(round(greatest_term*(log(greatest_term) + log(log(greatest_term))),0))
+        self.sieve = eratosthenes_sieve(self.upper_bound)
+        self.sequence = [k for k in range(len(self.sieve)) if self.sieve[k]]
 
+        return None
 
-criba = eratosthenes_sieve(upper_bound)
-prime_sequence = [k for k in range(len(criba)) if criba[k]]
-prime_sequence[:10]
+    def nth_prime(self, N:int)->int:
 
-N=6
-prime_sequence[N-1]
+        """
+        Function to compute prime number sequence using Erathostones' sieve
+
+        Parameter
+        ---------
+        N: int
+            term of the sequence of prime numbers
+
+        Return
+        ------
+        int
+        """
+
+        return self.sequence[N]
