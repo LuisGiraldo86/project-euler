@@ -20,7 +20,7 @@ Output Format
 Print the required answer for each test case. 
 """
 
-from EulerModule import eratosthenes_sieve
+from project_euler.EulerModule import eratosthenes_sieve
 from math import log
 
 # bounds for the n-th prime n log(n) and n(log(n) + log(log(n)))
