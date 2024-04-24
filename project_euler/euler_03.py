@@ -22,6 +22,19 @@ For each test case, display the largest prime factor of N.
 
 def largest_prime_factor(N:int)->int:
 
+    """
+    Compute the largest prime divisor of a postive integer N
+
+    Parameter
+    ---------
+    N: int
+        positive integer value
+
+    Return
+    ------
+    int
+    """
+
     while N%2==0: N//= 2  # Remove all even factors
 
     divisor = 3
