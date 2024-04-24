@@ -13,7 +13,7 @@ Constraints
 -----------
 1 <= T <= 100
 1 <= K <= 7
-1 <= N <= 1000
+K <= N <= 1000
 
 Output Format
 -------------
@@ -46,7 +46,7 @@ def list_product(int_str:list)->int:
             prod = prod*number
         return prod
 
-def largest_product(num:int, K:int, N:int)->int:
+def largest_product(N:int, K:int, num:int)->int:
 
     """
     Find the greatest product of K consecutive digits in the N digit number num.
@@ -66,7 +66,9 @@ def largest_product(num:int, K:int, N:int)->int:
     """
 
     str_num = str(num)
-    lst_num = [str_num[i:i+K] for i in range(0,N-K)]
-    lst_prod = [list_product(number) for number in lst_num]
-    
-    return max(lst_prod)
+    lst_num = [str_num[i:i+K] for i in range(0,N-K+1)]
+    if len(lst_num)==0:
+        return list_product(str_num)
+    else:
+        lst_prod = [list_product(number) for number in lst_num]
+        return max(lst_prod)
