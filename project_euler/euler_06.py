@@ -23,7 +23,20 @@ Print the required answer for each test case.
 
 # solution
 
-def sum_squares_difference(N):
+def sum_squares_difference(N:int)->int:
+
+    """
+    Function to compute the difference between the sum of the first N natural numbers squared and the sum of the squares of the first N natural numbers
+
+    Parameter
+    ---------
+    N: int
+        upper bound of the sequence of the first natural numbers
+
+    Return
+    ------
+    int
+    """
 
     squared_sum = ((N*(N+1))//2)**2
 
