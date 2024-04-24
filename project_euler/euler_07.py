@@ -35,20 +35,3 @@ class PrimeSequence:
         self.sequence = [k for k in range(len(self.sieve)) if self.sieve[k]]
 
         return None
-
-    def nth_prime(self, N:int)->int:
-
-        """
-        Function to compute prime number sequence using Erathostones' sieve
-
-        Parameter
-        ---------
-        N: int
-            term of the sequence of prime numbers
-
-        Return
-        ------
-        int
-        """
-
-        return self.sequence[N-1]
