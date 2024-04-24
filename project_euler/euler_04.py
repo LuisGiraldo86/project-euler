@@ -15,7 +15,7 @@ First line contains T that denotes the number of test cases. This is followed by
 Constraints
 -----------
 1 <= T <= 10
-101101 < N < 10^12
+101101 < N < 10^6
 
 Output Format
 -------------
