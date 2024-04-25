@@ -26,9 +26,19 @@ Print the value corresponding to each test case in separate line.
 
 from EulerModule import eratosthenes_sieve
 
+class PrimeSumation:
 
-ind_primes = eratosthenes_sieve(1000000)
-sumation=[0]*len(ind_primes)
+    def __init__(self, upper_bound:int) -> None:
 
-for k in range(1,len(ind_primes)):
-    sumation[k]+=sumation[k-1] + k*ind_primes[k]
+        self.ind_primes = eratosthenes_sieve(upper_bound)
+
+        sumation=[0]*len(self.ind_primes)
+        
+        for k in range(1,len(self.ind_primes)):
+            sumation[k]+=sumation[k-1] + k*self.ind_primes[k]
+        
+        self.sumation = sumation
+
+        pass
+
+        
