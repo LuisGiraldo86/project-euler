@@ -24,7 +24,7 @@ Print the value corresponding to each test case in separate line.
 
 # solution
 
-from EulerModule import eratosthenes_sieve
+from project_euler.EulerModule import eratosthenes_sieve
 
 class PrimeSumation:
 
