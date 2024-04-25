@@ -69,6 +69,19 @@ grid= [
 
 def lst_product(lst:list)->int:
 
+    """
+    Function to compute the product of all numbers in a list
+
+    Parameter
+    ---------
+    lst: list
+        list of integers
+
+    Return
+    ------
+    int
+    """
+
     product = 1
     for num in lst:
         if num == 0:
@@ -79,40 +92,119 @@ def lst_product(lst:list)->int:
 
 def max_lst_4product(lst:list)->int:
 
+    """
+    Function to find the maximum value of all possible products of four consecutive elements.
+
+    Parameter
+    ---------
+    lst: list
+        list of integers
+
+    Return
+    ------
+    int
+    """
+
     prods = [lst_product(lst[k:k+4]) for k in range(0,len(lst)-3)]
 
     return max(prods)
 
-def max_horizontal(grid)->int:
+def max_horizontal(grid:list)->int:
+
+    """
+    Function that computes the maximum value of all possible products of four consecutive elements row-wise in a rectangular grid.
+
+    Parameter
+    ---------
+    grid: list
+        list of lists, where each list has integer elements.
+
+    Return
+    ------
+    int
+    """
 
     row_prods = [max_lst_4product(grid[k]) for k in range(len(grid))]
 
     return max(row_prods)
 
-def max_vertical(grid)->int:
+def max_vertical(grid:list)->int:
+
+    """
+    Function that computes the maximum value of all possible products of four consecutive elements column-wise in a rectangular grid.
+
+    Parameter
+    ---------
+    grid: list
+        list of lists, where each list has integer elements.
+
+    Return
+    ------
+    int
+    """
 
     col_prods = [max_lst_4product(lst=[grid[i][k] for i in range(len(grid))]) for k in range(len(grid))]
 
     return max(col_prods)
 
-def max_diag(grid)->int:
+def max_diag(grid:list)->int:
+
+    """
+    Function that computes the maximum value of all possible products of four consecutive elements in the direction of the main diagonal in a squared grid.
+
+    Parameter
+    ---------
+    grid: list
+        list of lists, where each list has integer elements.
+
+    Return
+    ------
+    int
+    """
 
     diag_inf_prods = [max_lst_4product([grid[k][k-i] for k in range(i,len(grid))]) for i in range(len(grid)-3)]
     diag_sup_prods = [max_lst_4product([grid[k][k+i] for k in range(len(grid)-i)]) for i in range(len(grid)
                                                                                                   -3)]
     return max(diag_sup_prods+ diag_inf_prods)
 
-def max_antidiag(grid)->int:
+def max_antidiag(grid:list)->int:
+
+    """
+    Function that computes the maximum value of all possible products of four consecutive elements in the direction of the anti-diagonal in a squared grid.
+
+    Parameter
+    ---------
+    grid: list
+        list of lists, where each list has integer elements.
+
+    Return
+    ------
+    int
+    """
 
     adiag_inf_prods = [max_lst_4product([grid[len(grid)-i-1][k+i] for i in range(len(grid)-k)]) for k in range(1,len(grid)-3)]
     adiag_sup_prods = [max_lst_4product([grid[k-i][i] for i in range(0,k+1)]) for k in range(3, len(grid))]
+
     return max(adiag_sup_prods + adiag_inf_prods)
 
-def max_prod_grid(grid)->int:
+def max_prod_grid(grid:list)->int:
+
+    """
+    Function that computes the maximum value of all possible products of four consecutive elements in a squared grid. The four consecutive elements can be chosen in any straight direction.
+
+    Parameter
+    ---------
+    grid: list
+        list of lists, where each list has integer elements.
+
+    Return
+    ------
+    int
+    """
 
     M_ver = max_vertical(grid)
     M_hor = max_horizontal(grid)
-    M_diag = max_diag(grid)
-    M_anti = max_antidiag(grid)
+    M_diag= max_diag(grid)
+    M_anti= max_antidiag(grid)
 
     return max(M_ver, M_hor, M_diag, M_anti)
