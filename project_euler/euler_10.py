@@ -40,5 +40,3 @@ class PrimeSumation:
         self.sumation = sumation
 
         pass
-
-        
