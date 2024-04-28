@@ -32,6 +32,8 @@ Output Format
 For each test case, print the required answer in a new line.
 """
 
+# solution
+
 def new_triangle(old_tri:list, pos:int)->list:
 
     """
