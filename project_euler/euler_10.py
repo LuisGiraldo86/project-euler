@@ -27,6 +27,10 @@ Print the value corresponding to each test case in separate line.
 from project_euler.EulerModule import eratosthenes_sieve
 
 class PrimeSumation:
+    
+    """
+    Class designed to find the sum of all primes below certain N. This value has an upper bound equal to 10^6.
+    """
 
     def __init__(self, upper_bound:int) -> None:
 
