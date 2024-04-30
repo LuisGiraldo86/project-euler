@@ -36,11 +36,54 @@ For each test-case, print the required answer in one line.
 
 from EulerModule import eratosthenes_sieve, count_divisors_with_primes
 
-sieve = eratosthenes_sieve(29100)
+def list_of_primes(upper_bound:int)->list:
 
-primes = [k for k in range(len(sieve)) if sieve[k]]
+    """
+    Function to compute all the primes below certain upper bound.
 
-def first_triangle_divisors_2(N, fact1, fact2, strt=1):
+    Parameter
+    ---------
+    upper_bound: int
+        all prime number are below this value
+
+    Return
+    ------
+    list
+    """
+
+    sieve = eratosthenes_sieve(upper_bound)
+
+    primes = [k for k in range(len(sieve)) if sieve[k]]
+
+    return primes
+
+def first_triangle_divisors_2(N:int, fact1:int, fact2:int, primes:list, strt:int=1)->tuple:
+
+    """
+    Find the first triangular number with more than N divisors, starting the search from a specified point.
+    
+    This function calculates triangular numbers and their divisors using a combination of provided
+    initial divisor counts and a list of prime numbers. It efficiently finds the first triangular
+    number that exceeds a given number of divisors by leveraging known divisor counts for successive
+    numbers and updating them based on whether the current number is odd or even.
+    
+    Parameters
+    ----------
+    N: int 
+        The target number of divisors. The function seeks the first triangular number with more than N divisors.
+    fact1: int 
+        Initial number of divisors for 'n' or 'n//2', depending on the parity of the starting number 'strt'.
+    fact2: int 
+        Initial number of divisors for 'n+1' or '(n+1)//2', depending on the parity of 'strt'.
+    primes: list 
+        A list of prime numbers used to calculate the number of divisors of numbers during the search.
+    strt: int 
+        The starting point for 'n' in the search for the triangular number. Defaults to 1.
+    
+    Returns
+    -------
+    tuple
+    """
 
     n = strt
     if n%2==0:
@@ -69,12 +112,33 @@ def first_triangle_divisors_2(N, fact1, fact2, strt=1):
     
 
 def list_first_triangle(upper_bound:int)->list:
+    
+    """
+    Generate a list of the first triangular numbers that have more than N divisors for each N from 1 to upper_bound.
+
+    This function iterates over a range from 2 up to the specified upper_bound. For each N, it calculates the 
+    smallest triangular number that has more than N divisors, starting the search from the last triangular 
+    number found in the previous iteration. It uses a helper function `first_triangle_divisors_2` which efficiently
+    computes the desired triangular number and the divisor count for each step. 
+
+    Parameters
+    ----------
+    upper_bound: int 
+        The upper limit of the range for which the triangular numbers are calculated. For each number N from 1 to upper_bound, the function finds the first triangular number with more than N divisors.
+
+    Returns
+    -------
+    list
+    """
 
     lst = [1,3]
     cache = 1
     fact1, fact2 = 1, 2
+    prime_list = list_of_primes(upper_bound=30000)
+
     for N in range(2,upper_bound+1):
-        fact1, fact2, T_n, cache = first_triangle_divisors_2(N, fact1, fact2, strt=cache)
+
+        fact1, fact2, T_n, cache = first_triangle_divisors_2(N, fact1, fact2, primes=prime_list, strt=cache)
         lst.append(T_n)
 
     return lst
