@@ -19,13 +19,20 @@ Print only first 10 digit of the final sum
 """
 
 # solution
+def first_ten(lst:list)->str:
 
-N = int(input().strip())
+    """
+    Function to sum all the elements of a list with 50 digits numbers
 
-total_sum=0
+    Parameter
+    ---------
+    lst: list
+        list with integers with 50 digits
 
-for a0 in range(N):
-    n = int(input().strip())
-    total_sum+=n
+    Return
+    ------
+    str
+    """
 
-print(str(total_sum)[:10])
+    total_sum = sum(lst)
+    return str(total_sum[10:])
